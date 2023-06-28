@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_site/resources/colors/colors.dart';
 import 'package:my_site/resources/dims/global_dimensions.dart';
 import 'package:my_site/resources/images/images.dart';
@@ -43,14 +44,14 @@ class HomeImage extends StatelessWidget {
                   const Text(HomeScreenStrings.introBody,
                       style: ProjectTextStyles.body),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   MaterialButton(
                     onPressed: () {},
                     color: ProjectColors.highLightColor,
                     child: Container(
                         margin: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 10),
+                            horizontal: 60, vertical: 15),
                         child: const Text(
                           HomeScreenStrings.buttonText,
                           style: ProjectTextStyles.onItemStyle,
@@ -60,8 +61,27 @@ class HomeImage extends StatelessWidget {
               ),
             ),
           ),
+          const Positioned(bottom: 30,right: 40,child: Links(),)
         ],
       ),
     );
   }
 }
+
+class Links extends StatelessWidget {
+  const Links({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      direction: Axis.vertical,
+      spacing: 20,
+      children: [
+        IconButton(onPressed: () {} ,icon: const FaIcon(FontAwesomeIcons.github ,color: Colors.white,size: GlobalDims.linkIconSize,)),
+        IconButton(onPressed: () {} ,icon: const FaIcon(FontAwesomeIcons.linkedin,color: Colors.white , size: GlobalDims.linkIconSize,)),
+        IconButton(onPressed: () {} ,icon: const FaIcon(FontAwesomeIcons.solidEnvelope,color: Colors.white , size: GlobalDims.linkIconSize,)),
+      ],
+    );
+  }
+}
+

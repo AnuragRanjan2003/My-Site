@@ -69,6 +69,7 @@ class Projects extends StatelessWidget {
           height: 50,
         ),
         Obx(() => Row(
+          mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                   controller.projectList.length,
                   (index) => Container(
@@ -86,49 +87,53 @@ class Projects extends StatelessWidget {
 }
 
 Widget projectItem(Project item, ProjectController c, int index) {
-  return InkWell(
-    onTap: () {},
-    onHover: (h) {
-      debugPrint("hovered project");
-      if (h) {
-        c.hovered.value = index;
-      } else {
-        c.hovered.value = -1;
-      }
-    },
-    child: Container(
-      color: (c.hovered.value == index)
-          ? ProjectColors.highLightColor
-          : ProjectColors.disabledColor,
-      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-      child: Wrap(
-        direction: Axis.vertical,
-        children: [
-          const SizedBox(
-            width: 150,
-            height: 120,
-          ),
-          Image(
-            image: item.image,
-            height: 30,
-            width: 30,
-          ),
-          Text(
-            item.name,
-            style: (c.hovered.value == index)
-                ? ProjectTextStyles.onItemTitle
-                : ProjectTextStyles.onDisabledItemTitle,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            item.discription,
-            style: (c.hovered.value == index)
-                ? ProjectTextStyles.onItemStyle
-                : ProjectTextStyles.onDisabledItemStyle,
-          )
-        ],
+  return Card(
+    elevation: 10,
+    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+    child: InkWell(
+      onTap: () {},
+      onHover: (h) {
+        debugPrint("hovered project");
+        if (h) {
+          c.hovered.value = index;
+        } else {
+          c.hovered.value = -1;
+        }
+      },
+      child: Container(
+        color: (c.hovered.value == index)
+            ? ProjectColors.highLightColor
+            : ProjectColors.disabledColor,
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+        child: Wrap(
+          direction: Axis.vertical,
+          children: [
+            const SizedBox(
+              width: 150,
+              height: 120,
+            ),
+            Image(
+              image: item.image,
+              height: 30,
+              width: 30,
+            ),
+            Text(
+              item.name,
+              style: (c.hovered.value == index)
+                  ? ProjectTextStyles.onItemTitle
+                  : ProjectTextStyles.onDisabledItemTitle,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              item.discription,
+              style: (c.hovered.value == index)
+                  ? ProjectTextStyles.onItemStyle
+                  : ProjectTextStyles.onDisabledItemStyle,
+            )
+          ],
+        ),
       ),
     ),
   );

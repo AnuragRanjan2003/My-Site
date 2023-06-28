@@ -12,22 +12,31 @@ class HomeScreenDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: ProjectColors.backGroundColor,
-      body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                NavBarDesktop(),
-                HomeImage(),
-                TechStackBar(),
-                SizedBox(height: 30,),
-                ProjectsInfo(),
-                SizedBox(height: 20,),
-                FeaturedSection()
-              ],
-            ),
-          ) )
-    );
+        backgroundColor: ProjectColors.backGroundColor,
+        body: SafeArea(
+            child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              NavBarDesktop(),
+              HomeImage(),
+              SizedBox(
+                height: 20,
+              ),
+              TechStackBar(),
+              SizedBox(
+                height: 50,
+              ),
+              ProjectsInfo(),
+              SizedBox(
+                height: 60,
+              ),
+              FeaturedSection(),
+              SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
+        )));
   }
 }
