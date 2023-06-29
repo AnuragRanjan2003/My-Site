@@ -7,4 +7,7 @@ class ProjectAssetImages {
   static const firebaseDisabledImage = AssetImage('lib/assets/images/firebase_logo_disabled.png');
   static const firebaseColorImage = AssetImage('lib/assets/images/firebase_logo.png');
   static const androidIcon = AssetImage('lib/assets/images/android_icon.png');
+  static const signUp = AssetImage('lib/assets/images/sign_up.png');
+  static const logIn = AssetImage('lib/assets/images/login.png');
+  static const androidImage = AssetImage('lib/assets/images/android_image.png');
 }

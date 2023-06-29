@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_site/controller/component_controller/tech_bar_controller.dart';
 import 'package:my_site/resources/dims/global_dimensions.dart';
-import 'package:my_site/resources/localdata/dummy_data.dart';
 
 import '../../../../model/tech_item.dart';
 
@@ -17,26 +16,19 @@ class TechStackBar extends StatelessWidget {
       child: Obx(
         () => Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children:
-                List.generate(controller.list.length, (index) => techItem(controller.list[index],controller,index))),
+            children: List.generate(
+                controller.list.length,
+                (index) =>
+                    techItem(controller.list[index], controller, index))),
       ),
     );
   }
 
-  Widget techItem(TechItem item , TechBarController c, int index) {
-    return InkWell(
-        onTap: () {},
-        onHover: (h) {
-          if(h){
-            c.hover(index);
-          }else{
-            c.unHover();
-          }
-        },
-        hoverColor: Colors.transparent,
-        splashColor: Colors.transparent,
+  Widget techItem(TechItem item, TechBarController c, int index) {
+    return Tooltip(
+        message: item.name,
         child: Image(
-          image: (c.hoveredItem.value==index)?item.colorImage:item.disabledImage,
+          image: item.colorImage,
           height: 80,
           width: 80,
           fit: BoxFit.cover,

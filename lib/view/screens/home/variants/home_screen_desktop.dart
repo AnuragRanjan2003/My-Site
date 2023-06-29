@@ -12,13 +12,14 @@ class HomeScreenDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(120), child: NavBarDesktop()),
         backgroundColor: ProjectColors.backGroundColor,
         body: SafeArea(
             child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              NavBarDesktop(),
               HomeImage(),
               SizedBox(
                 height: 20,

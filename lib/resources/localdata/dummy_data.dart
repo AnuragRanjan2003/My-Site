@@ -1,3 +1,4 @@
+import 'package:my_site/model/blog_model.dart';
 import 'package:my_site/resources/images/images.dart';
 
 import '../../model/project_model.dart';
@@ -8,7 +9,9 @@ class TechData {
     TechItem('flutter', ProjectAssetImages.flutterColorImage,
         ProjectAssetImages.flutterDisabledImage),
     TechItem('firebase', ProjectAssetImages.firebaseColorImage,
-        ProjectAssetImages.firebaseDisabledImage)
+        ProjectAssetImages.firebaseDisabledImage),
+    TechItem('android', ProjectAssetImages.androidImage,
+        ProjectAssetImages.androidImage)
   ];
 }
 
@@ -22,6 +25,14 @@ class ProjectData {
         const Duration(seconds: 2),
         () => _list,
       );
+}
+
+class BlogData {
+  static final List<DisplayBlog> _list = List.generate(18, (index) => DisplayBlog("Blog Number ${index+1}", "This is my first blog. like share subscribe.", "2023-06-${index+1}"));
+
+
+  Future<List<DisplayBlog>> get list async =>
+      Future.delayed(const Duration(seconds: 4), () => _list);
 }
 
 class SuccessData {

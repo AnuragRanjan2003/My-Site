@@ -8,6 +8,7 @@ import 'package:my_site/resources/colors/colors.dart';
 import 'package:my_site/resources/dims/global_dimensions.dart';
 import 'package:my_site/resources/styles/text_styles.dart';
 
+import '../../../../others/routes.dart';
 import '../../../../resources/strings/home_screen_strings.dart';
 
 class FeaturedSection extends StatelessWidget {
@@ -66,7 +67,7 @@ class SuccessfulItem extends StatelessWidget {
           onPressed: () {},
           highlightElevation: 10,
           hoverElevation: 10,
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: const Wrap(
             direction: Axis.horizontal,
             children: [
@@ -147,7 +148,7 @@ class OnGoingSection extends StatelessWidget {
           height: 20,
         ),
         TextButton(
-            onPressed: () {},
+            onPressed: () => Get.toNamed(Routes.blogScreen),
             child: const Wrap(
               direction: Axis.horizontal,
               spacing: 10,

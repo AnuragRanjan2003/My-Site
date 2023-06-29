@@ -3,11 +3,13 @@ import 'package:my_site/resources/colors/colors.dart';
 
 class ProjectTextStyles {
   static const body = TextStyle(color: ProjectColors.lightBlackColor , fontSize: 20 , overflow: TextOverflow.ellipsis,);
+  static const bodyDark = TextStyle(color: ProjectColors.textColor , fontSize: 20 , overflow: TextOverflow.ellipsis,);
   static const subHeader = TextStyle(color: ProjectColors.textColor , fontSize: 30 , fontWeight: FontWeight.w700, overflow: TextOverflow.visible);
   static const header = TextStyle(color: ProjectColors.textColor , fontSize: 30 , fontWeight: FontWeight.w700 , overflow: TextOverflow.visible);
   static const largeHeader = TextStyle(color: ProjectColors.textColor , fontSize: 50 , fontWeight: FontWeight.w700);
   static const item = TextStyle(color: ProjectColors.textColor , fontSize: 17);
-  static const highlightedItem = TextStyle(color: ProjectColors.highLightColor , fontSize: 24 , fontWeight: FontWeight.w700);
+  static const date = TextStyle(color: ProjectColors.lightBlackColor , fontSize: 17, fontWeight: FontWeight.w300);
+  static const highlightedItem = TextStyle(color: ProjectColors.highLightColor , fontSize: 28 , fontWeight: FontWeight.w700);
   static const highlightedButtonText = TextStyle(color: ProjectColors.highLightColor , fontSize: 18 , fontWeight: FontWeight.w700);
   static const onItemStyle = TextStyle(color: ProjectColors.backGroundColor , fontSize: 16 , overflow: TextOverflow.visible);
   static const onItemTitle =TextStyle(color: ProjectColors.backGroundColor , fontSize: 18, fontWeight: FontWeight.w500);
@@ -18,5 +20,7 @@ class ProjectTextStyles {
   static const onDisabledItemTitle =TextStyle(color: ProjectColors.textColor , fontSize: 18, fontWeight: FontWeight.w500);
 
   static const smallHighLightedText =TextStyle(color: ProjectColors.backGroundColor , fontSize: 14, fontWeight: FontWeight.w500);
+  static const highLightedText = TextStyle(color: ProjectColors.highLightColor, fontSize: 17);
+  static const dialogHeader = TextStyle(color: ProjectColors.textColor , fontSize: 32 , fontWeight: FontWeight.w700);
 
 }

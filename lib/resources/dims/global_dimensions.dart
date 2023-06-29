@@ -5,5 +5,5 @@ class GlobalDims {
   static const slideTimeSlow = Duration(seconds: 5);
   static const slideTimeFast = Duration(seconds: 2);
   static const linkIconSize = 40.00;
-  static const dialogElementWidth = 250.00;
+  static const dialogElementWidth = 400.00;
 }
