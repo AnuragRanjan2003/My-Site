@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:my_site/resources/colors/colors.dart';
 
 class ProjectTextStyles {
@@ -22,5 +23,7 @@ class ProjectTextStyles {
   static const smallHighLightedText =TextStyle(color: ProjectColors.backGroundColor , fontSize: 14, fontWeight: FontWeight.w500);
   static const highLightedText = TextStyle(color: ProjectColors.highLightColor, fontSize: 17);
   static const dialogHeader = TextStyle(color: ProjectColors.textColor , fontSize: 32 , fontWeight: FontWeight.w700);
+  static const onItemTitleWhite =TextStyle(color: ProjectColors.highLightColor , fontSize: 18, fontWeight: FontWeight.w500);
 
+  static const errorStyle = TextStyle(color: Colors.red , fontSize: 14);
 }

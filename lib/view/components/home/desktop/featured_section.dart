@@ -43,38 +43,45 @@ class SuccessfulItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(
-          width: double.infinity,
-        ),
-        Image(
-          height: 300,
-          width: 300,
-          fit: BoxFit.fitHeight,
-          image: project.image,
+
+        Expanded(
+          flex: 8,
+          child: Image(
+            height: 300,
+            width: 300,
+            fit: BoxFit.fitHeight,
+            image: project.image,
+          ),
         ),
         const SizedBox(
           height: 30,
         ),
-        Text(
-          project.discription,
-          style: ProjectTextStyles.body,
-          textAlign: TextAlign.start,
-          softWrap: true,
-          maxLines: 5,
+        Expanded(
+          flex: 10,
+          child: Text(
+            project.discription,
+            style: ProjectTextStyles.body,
+            textAlign: TextAlign.start,
+            softWrap: true,
+            maxLines: 5,
+          ),
         ),
         const SizedBox(height: 40,),
-        MaterialButton(
-          onPressed: () {},
-          highlightElevation: 10,
-          hoverElevation: 10,
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: const Wrap(
-            direction: Axis.horizontal,
-            children: [
-              Text("Visit github" , style: ProjectTextStyles.highlightedButtonText),
-              SizedBox(width: 20,),
-              FaIcon(FontAwesomeIcons.github , color: ProjectColors.highLightColor)
-            ],
+        Expanded(
+          flex: 2,
+          child: MaterialButton(
+            onPressed: () {},
+            highlightElevation: 10,
+            hoverElevation: 10,
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: const Wrap(
+              direction: Axis.horizontal,
+              children: [
+                Text("Visit github" , style: ProjectTextStyles.highlightedButtonText),
+                SizedBox(width: 20,),
+                FaIcon(FontAwesomeIcons.github , color: ProjectColors.highLightColor)
+              ],
+            ),
           ),
         )
       ],
@@ -107,7 +114,7 @@ class SuccessfulSection extends StatelessWidget {
           surfaceTintColor: ProjectColors.backGroundColor,
           child: Container(
             height: 600,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: Obx(
               () => CarouselSlider(
                   items: controller.list
@@ -164,7 +171,7 @@ class OnGoingSection extends StatelessWidget {
               ],
             )),
         const SizedBox(
-          height: 50,
+          height: 30,
         ),
         const Text(
           HomeScreenStrings.onGoingHead,
@@ -180,7 +187,7 @@ class OnGoingSection extends StatelessWidget {
           surfaceTintColor: ProjectColors.backGroundColor,
           child: Container(
             height: 600,
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: Obx(
               () => CarouselSlider(
                   items: controller.list
@@ -204,40 +211,47 @@ Widget onGoingItems(Project project) => Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(
-          width: double.infinity,
-        ),
-        Image(
-          height: 300,
-          width: 300,
-          fit: BoxFit.fitHeight,
-          image: project.image,
+        //const SizedBox(width: double.infinity,),
+        Expanded(
+          flex: 8,
+          child: Image(
+            height: 300,
+            width: 300,
+            fit: BoxFit.fitHeight,
+            image: project.image,
+          ),
         ),
         const SizedBox(
           height: 30,
         ),
-        Text(
-          project.discription,
-          style: ProjectTextStyles.body,
-          textAlign: TextAlign.start,
-          softWrap: true,
-          maxLines: 5,
+        Expanded(
+          flex: 10,
+          child: Text(
+            project.discription,
+            style: ProjectTextStyles.body,
+            textAlign: TextAlign.start,
+            softWrap: true,
+            maxLines: 5,
+          ),
         ),
         const SizedBox(
           height: 20,
         ),
-        MaterialButton(
-          onPressed: () {},
-          highlightElevation: 10,
-          hoverElevation: 10,
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: const Wrap(
-            direction: Axis.horizontal,
-            spacing: 10,
-            children: [
-              Text("Visit github" , style: ProjectTextStyles.highlightedButtonText),
-              FaIcon(FontAwesomeIcons.github , color: ProjectColors.highLightColor)
-            ],
+        Expanded(
+          flex: 2,
+          child: MaterialButton(
+            onPressed: () {},
+            highlightElevation: 10,
+            hoverElevation: 10,
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: const Wrap(
+              direction: Axis.horizontal,
+              spacing: 10,
+              children: [
+                Text("Visit github" , style: ProjectTextStyles.highlightedButtonText),
+                FaIcon(FontAwesomeIcons.github , color: ProjectColors.highLightColor)
+              ],
+            ),
           ),
         )
       ],

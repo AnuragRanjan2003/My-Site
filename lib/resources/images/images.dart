@@ -10,4 +10,5 @@ class ProjectAssetImages {
   static const signUp = AssetImage('lib/assets/images/sign_up.png');
   static const logIn = AssetImage('lib/assets/images/login.png');
   static const androidImage = AssetImage('lib/assets/images/android_image.png');
+  static const doneImage = AssetImage('lib/assets/images/done.png');
 }
