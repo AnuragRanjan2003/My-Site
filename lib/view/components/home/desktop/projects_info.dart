@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_site/controller/component_controller/project_controller.dart';
@@ -68,19 +69,20 @@ class Projects extends StatelessWidget {
         const SizedBox(
           height: 50,
         ),
-        Obx(() => Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                  controller.projectList.length,
-                  (index) => Container(
-                    margin: EdgeInsets.only(right: 20),
-                    child: projectItem(
-                          controller.projectList[index],
-                          controller,
-                          index,
-                        ),
-                  )),
-            ))
+        SizedBox(
+          height: 250,
+          child: Center(
+            child: Obx(() => ListView.separated(
+              scrollDirection: Axis.horizontal,
+                  itemCount: controller.projectList.length,
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 10,
+                  ),
+                  itemBuilder: (context, index) =>
+                      Obx(()=>projectItem(controller.projectList[index], controller, index)),
+                )),
+          ),
+        )
       ],
     );
   }
@@ -109,8 +111,8 @@ Widget projectItem(Project item, ProjectController c, int index) {
           direction: Axis.vertical,
           children: [
             const SizedBox(
-              width: 150,
               height: 120,
+              width: 180,
             ),
             Image(
               image: item.image,

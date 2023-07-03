@@ -11,27 +11,35 @@ class TechStackBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TechBarController controller = Get.put(TechBarController());
-    return Container(
+
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: GlobalDims.paddingHoriz),
-      child: Obx(
-        () => Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List.generate(
-                controller.list.length,
-                (index) =>
-                    techItem(controller.list[index], controller, index))),
-      ),
+      child: SizedBox(
+          height: 80,
+          child: Obx(
+            () => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(
+                  controller.list.length,
+                  (index) => techItem(
+                      controller.list[index], controller, index)),
+            ),
+          )),
     );
   }
 
   Widget techItem(TechItem item, TechBarController c, int index) {
-    return Tooltip(
-        message: item.name,
-        child: Image(
-          image: item.colorImage,
-          height: 80,
-          width: 80,
-          fit: BoxFit.cover,
-        ));
+    return Flexible(
+      fit: FlexFit.loose,
+      child: Tooltip(
+          message: item.name,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Image(
+              image: item.colorImage,
+              fit: BoxFit.fitWidth,
+            ),
+          )),
+    );
   }
 }

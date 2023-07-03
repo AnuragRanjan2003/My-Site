@@ -11,14 +11,15 @@ class TechData {
     TechItem('firebase', ProjectAssetImages.firebaseColorImage,
         ProjectAssetImages.firebaseDisabledImage),
     TechItem('android', ProjectAssetImages.androidImage,
-        ProjectAssetImages.androidImage)
+        ProjectAssetImages.androidImage),
+
   ];
 }
 
 class ProjectData {
   static const List<Project> _list = [
     Project('Android', ProjectAssetImages.androidIcon, 'android projects'),
-    Project('firebase', ProjectAssetImages.androidIcon, 'firebase projects')
+    Project('firebase', ProjectAssetImages.androidIcon, 'firebase projects'),
   ];
 
   Future<List<Project>> get list async => Future.delayed(

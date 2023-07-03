@@ -7,7 +7,7 @@ import 'package:my_site/resources/dims/global_dimensions.dart';
 import 'package:my_site/resources/strings/blog_screen_strings.dart';
 import 'package:my_site/resources/styles/text_styles.dart';
 import 'package:my_site/view/components/blog/desktop/blog_item.dart';
-import 'package:my_site/view/components/nav_bar_desktop.dart';
+import 'package:my_site/view/components/home/desktop/nav_bar_desktop.dart';
 
 import '../../../../resources/colors/colors.dart';
 

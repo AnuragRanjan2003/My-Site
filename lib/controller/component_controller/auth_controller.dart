@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_site/model/popup_item.dart';
 import 'package:my_site/others/resource.dart';
 import 'package:my_site/repo/auth_repo.dart';
+import 'package:my_site/resources/images/images.dart';
 
 import '../../model/user.dart';
 
 class AuthController extends GetxController {
-  RxBool admin = false.obs;
+  RxBool admin = true.obs;
   Rxn<User> user = Rxn<User>();
   Rxn<String> authError = Rxn<String>();
   AuthRepo repo = AuthRepo();
   Rx<String> emailError = "".obs;
   Rx<String> passError = "".obs;
   Rx<bool> loading = false.obs;
+  
+  List<PopUpItem> popupList = [PopUpItem("Create Blog", ProjectAssetImages.compose) , PopUpItem("Add Project", ProjectAssetImages.project), PopUpItem("Add Techstack", ProjectAssetImages.dart)];
 
   toggleAdmin() {
     admin.value = !admin.value;

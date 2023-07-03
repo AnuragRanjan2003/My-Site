@@ -4,7 +4,7 @@ import 'package:my_site/view/components/home/desktop/featured_section.dart';
 import 'package:my_site/view/components/home/desktop/home_image.dart';
 import 'package:my_site/view/components/home/desktop/projects_info.dart';
 import 'package:my_site/view/components/home/desktop/tech_stack_bar.dart';
-import 'package:my_site/view/components/nav_bar_desktop.dart';
+import 'package:my_site/view/components/home/desktop/nav_bar_desktop.dart';
 
 class HomeScreenDesktop extends StatelessWidget {
   const HomeScreenDesktop({super.key});

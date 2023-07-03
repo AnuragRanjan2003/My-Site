@@ -8,7 +8,8 @@ import 'package:my_site/resources/strings/home_screen_strings.dart';
 import 'package:my_site/resources/styles/text_styles.dart';
 import 'package:my_site/view/components/home/desktop/dialog.dart';
 
-import '../../others/routes.dart';
+import '../../../../model/popup_item.dart';
+import '../../../../others/routes.dart';
 
 class NavBarDesktop extends StatelessWidget {
   const NavBarDesktop({super.key});
@@ -33,9 +34,17 @@ class NavBarDesktop extends StatelessWidget {
             children: [
               Obx(() => Visibility(
                   visible: authController.userIsAdmin(),
-                  child: navItem('admin', () {}))),
-              navItem('home', () => Get.toNamed(Routes.homeScreen)),
-              navItem('blogs', () => Get.toNamed(Routes.blogScreen)),
+                  child: GestureDetector(
+                    child: navItem('admin', () {}, ProjectAssetImages.admin),
+                    onTapDown: (h) {
+                      _showPopUpMenu(
+                          h.globalPosition, context, authController.popupList);
+                    },
+                  ))),
+              navItem('home', () => Get.toNamed(Routes.homeScreen),
+                  ProjectAssetImages.home),
+              navItem('blogs', () => Get.toNamed(Routes.blogScreen),
+                  ProjectAssetImages.blog),
               Obx(() => Visibility(
                     visible: !authController.userExists(),
                     child: MaterialButton(
@@ -108,14 +117,65 @@ class NavBarDesktop extends StatelessWidget {
     );
   }
 
-  Container navItem(String name, void Function() onTap) {
+  Container navItem(String name, void Function() onTap, ImageProvider? image) {
     return Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),
         child: TextButton(
             onPressed: onTap,
-            child: Text(
-              name,
-              style: ProjectTextStyles.item,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (image != null)
+                  Image(
+                    image: image,
+                    height: 25,
+                    width: 25,
+                  ),
+                const SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  name,
+                  style: ProjectTextStyles.item,
+                ),
+              ],
             )));
+  }
+
+  void _showPopUpMenu(
+      Offset offset, BuildContext context, List<PopUpItem> list) async {
+    double left = offset.dx;
+    double top = offset.dy;
+    left -= 75;
+    top += 20;
+    await showMenu(
+        surfaceTintColor: Colors.white,
+        context: context,
+        position: RelativeRect.fromLTRB(left, top, left, top),
+        items: List.generate(
+            list.length,
+            (index) => PopupMenuItem(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                        flex: 6,
+                        child: Image(
+                          image: list[index].iconData,
+                          height: 25,
+                          width: 25,
+                        )),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Expanded(
+                        flex: 13,
+                        child: Text(
+                          list[index].name,
+                          textAlign: TextAlign.start,
+                        )),
+                  ],
+                ))),
+        elevation: 5);
   }
 }

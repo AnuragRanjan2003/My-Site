@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_site/resources/colors/colors.dart';
@@ -41,8 +42,11 @@ class HomeImage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(HomeScreenStrings.introBody,
-                      style: ProjectTextStyles.body),
+                  const Text(HomeScreenStrings.introBody, style: ProjectTextStyles.body,),
+                  const SizedBox(height: 10,),
+                  AnimatedTextKit(
+                    animatedTexts: ProjectTextStyles().animatedTexts,
+                  repeatForever: true,),
                   const SizedBox(
                     height: 30,
                   ),
@@ -61,7 +65,11 @@ class HomeImage extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(bottom: 30,right: 40,child: Links(),)
+          const Positioned(
+            bottom: 30,
+            right: 40,
+            child: Links(),
+          )
         ],
       ),
     );
@@ -77,11 +85,28 @@ class Links extends StatelessWidget {
       direction: Axis.vertical,
       spacing: 20,
       children: [
-        IconButton(onPressed: () {} ,icon: const FaIcon(FontAwesomeIcons.github ,color: Colors.white,size: GlobalDims.linkIconSize,)),
-        IconButton(onPressed: () {} ,icon: const FaIcon(FontAwesomeIcons.linkedin,color: Colors.white , size: GlobalDims.linkIconSize,)),
-        IconButton(onPressed: () {} ,icon: const FaIcon(FontAwesomeIcons.solidEnvelope,color: Colors.white , size: GlobalDims.linkIconSize,)),
+        IconButton(
+            onPressed: () {},
+            icon: const FaIcon(
+              FontAwesomeIcons.github,
+              color: Colors.white,
+              size: GlobalDims.linkIconSize,
+            )),
+        IconButton(
+            onPressed: () {},
+            icon: const FaIcon(
+              FontAwesomeIcons.linkedin,
+              color: Colors.white,
+              size: GlobalDims.linkIconSize,
+            )),
+        IconButton(
+            onPressed: () {},
+            icon: const FaIcon(
+              FontAwesomeIcons.solidEnvelope,
+              color: Colors.white,
+              size: GlobalDims.linkIconSize,
+            )),
       ],
     );
   }
 }
-
