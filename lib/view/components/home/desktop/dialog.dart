@@ -126,8 +126,9 @@ class TextArea extends StatelessWidget {
                 const Size(GlobalDims.dialogElementWidth, 150)),
             child: Obx(() => TextField(
                   onChanged: (s) {
-                    if (authController.emailError.isNotEmpty)
+                    if (authController.emailError.isNotEmpty) {
                       authController.emailError.value = "";
+                    }
                   },
                   textAlign: TextAlign.center,
                   style: ProjectTextStyles.item,

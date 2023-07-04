@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:gql/src/ast/ast.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:my_site/others/queries.dart';
@@ -10,7 +9,7 @@ import '../model/user.dart';
 import '../others/resource.dart';
 
 class Api {
-  static final _baseUrl = dotenv.env['BASEURL'];
+  static final _baseUrl = 'https://gleaming-hare-beanie.cyclic.app';
   static final HttpLink _link = HttpLink('$_baseUrl/graphql');
   static final GraphQLClient client =
       GraphQLClient(link: _link, cache: GraphQLCache(store: HiveStore()));
@@ -52,11 +51,11 @@ class AuthApi extends Api {
       }
       return checkForSuccess(result.data!['logInUser']);
     } on GraphQLError catch (e) {
-      debugPrint(e.message);
+      debugPrint("graphqlerror :${e.message}");
       return Failure<User>(e.message);
     } catch (e) {
       debugPrint(e.toString());
-      return Failure(e.toString());
+      return Failure("${e.runtimeType} : $e");
     }
   }
 

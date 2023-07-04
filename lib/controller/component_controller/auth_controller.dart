@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/exceptions/exceptions.dart';
 import 'package:my_site/model/popup_item.dart';
 import 'package:my_site/others/resource.dart';
 import 'package:my_site/repo/auth_repo.dart';
@@ -59,6 +60,7 @@ class AuthController extends GetxController {
         debugPrint(user.value!.toString());
       } else {
         user.value = null;
+
         emailError.value = res.error;
         passError.value = res.error;
         debugPrint(res.error);
