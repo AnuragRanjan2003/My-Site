@@ -42,19 +42,19 @@ class AuthApi extends Api {
   }
 
   Future<Resource<User>> loginUser(String email, String password) async {
-    debugPrint("logging in with ${Api._baseUrl}");
+    print("logging in with ${Api._baseUrl}");
     try {
       QueryResult result = await Api.client.query(QueryOptions(
           document: AuthQueries().loginUserQuery(email, password)));
-      if (kDebugMode) {
+
         print(result.data);
-      }
+
       return checkForSuccess(result.data!['logInUser']);
     } on GraphQLError catch (e) {
-      debugPrint("graphqlerror :${e.message}");
+      print("graphqlerror :${e.message}");
       return Failure<User>(e.message);
     } catch (e) {
-      debugPrint(e.toString());
+      print(e.toString());
       return Failure("${e.runtimeType} : $e");
     }
   }

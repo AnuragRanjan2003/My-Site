@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_site/controller/component_controller/project_controller.dart';
@@ -8,6 +7,7 @@ import 'package:my_site/resources/strings/home_screen_strings.dart';
 import 'package:my_site/resources/styles/text_styles.dart';
 
 import '../../../../model/project_model.dart';
+import '../../gradient_text.dart';
 
 class ProjectsInfo extends StatelessWidget {
   const ProjectsInfo({super.key});
@@ -44,7 +44,7 @@ class SideInfo extends StatelessWidget {
           HomeScreenStrings.experienceHead,
           style: ProjectTextStyles.highLightedTitle,
         ),
-        Text(
+        GradientText(
           HomeScreenStrings.experienceBody,
           style: ProjectTextStyles.subTitle,
         ),
@@ -62,7 +62,7 @@ class Projects extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        const GradientText(
           HomeScreenStrings.projectsHead,
           style: ProjectTextStyles.subHeader,
         ),
@@ -73,13 +73,13 @@ class Projects extends StatelessWidget {
           height: 250,
           child: Center(
             child: Obx(() => ListView.separated(
-              scrollDirection: Axis.horizontal,
+                  scrollDirection: Axis.horizontal,
                   itemCount: controller.projectList.length,
                   separatorBuilder: (context, index) => const SizedBox(
                     width: 10,
                   ),
-                  itemBuilder: (context, index) =>
-                      Obx(()=>projectItem(controller.projectList[index], controller, index)),
+                  itemBuilder: (context, index) => Obx(() => projectItem(
+                      controller.projectList[index], controller, index)),
                 )),
           ),
         )
@@ -91,26 +91,16 @@ class Projects extends StatelessWidget {
 Widget projectItem(Project item, ProjectController c, int index) {
   return Card(
     elevation: 10,
-    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+    shape: GlobalDims.roundButton,
     child: InkWell(
       onTap: () {},
-      onHover: (h) {
-        debugPrint("hovered project");
-        if (h) {
-          c.hovered.value = index;
-        } else {
-          c.hovered.value = -1;
-        }
-      },
       child: Container(
-        color: (c.hovered.value == index)
-            ? ProjectColors.highLightColor
-            : ProjectColors.disabledColor,
+        decoration: GlobalDims.roundContainer,
         padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
         child: Wrap(
           direction: Axis.vertical,
           children: [
-            const SizedBox(
+             const SizedBox(
               height: 120,
               width: 180,
             ),
@@ -121,18 +111,14 @@ Widget projectItem(Project item, ProjectController c, int index) {
             ),
             Text(
               item.name,
-              style: (c.hovered.value == index)
-                  ? ProjectTextStyles.onItemTitle
-                  : ProjectTextStyles.onDisabledItemTitle,
+              style: ProjectTextStyles.onDisabledItemTitle,
             ),
             const SizedBox(
               height: 10,
             ),
             Text(
               item.discription,
-              style: (c.hovered.value == index)
-                  ? ProjectTextStyles.onItemStyle
-                  : ProjectTextStyles.onDisabledItemStyle,
+              style:  ProjectTextStyles.onDisabledItemStyle,
             )
           ],
         ),

@@ -15,7 +15,7 @@ class HomeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double wt = MediaQuery.sizeOf(context).width;
-    double ht = min(wt * 9 / 16, 500);
+    double ht = min(wt * 9 / 16, 550);
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: Stack(
@@ -52,61 +52,32 @@ class HomeImage extends StatelessWidget {
                   ),
                   MaterialButton(
                     onPressed: () {},
-                    color: ProjectColors.highLightColor,
+                    shape: GlobalDims.roundButton,
+                    color: ProjectColors.onBackGroundColor,
                     child: Container(
                         margin: const EdgeInsets.symmetric(
-                            horizontal: 60, vertical: 15),
-                        child: const Text(
-                          HomeScreenStrings.buttonText,
-                          style: ProjectTextStyles.onItemStyle,
+                            horizontal: 40, vertical: 15),
+                        child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              HomeScreenStrings.buttonText,
+                              style: ProjectTextStyles.onItemStyle,
+                            ),
+                            SizedBox(width: 10,),
+                            FaIcon(FontAwesomeIcons.arrowUpRightFromSquare,color: ProjectColors.textColor,size: 15,)
+                          ],
                         )),
                   )
                 ],
               ),
             ),
           ),
-          const Positioned(
-            bottom: 30,
-            right: 40,
-            child: Links(),
-          )
+
         ],
       ),
     );
   }
 }
 
-class Links extends StatelessWidget {
-  const Links({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      direction: Axis.vertical,
-      spacing: 20,
-      children: [
-        IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.github,
-              color: Colors.white,
-              size: GlobalDims.linkIconSize,
-            )),
-        IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.linkedin,
-              color: Colors.white,
-              size: GlobalDims.linkIconSize,
-            )),
-        IconButton(
-            onPressed: () {},
-            icon: const FaIcon(
-              FontAwesomeIcons.solidEnvelope,
-              color: Colors.white,
-              size: GlobalDims.linkIconSize,
-            )),
-      ],
-    );
-  }
-}

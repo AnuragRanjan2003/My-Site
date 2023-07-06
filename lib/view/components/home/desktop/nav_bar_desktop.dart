@@ -6,6 +6,7 @@ import 'package:my_site/resources/dims/global_dimensions.dart';
 import 'package:my_site/resources/images/images.dart';
 import 'package:my_site/resources/strings/home_screen_strings.dart';
 import 'package:my_site/resources/styles/text_styles.dart';
+import 'package:my_site/view/components/gradient_text.dart';
 import 'package:my_site/view/components/home/desktop/dialog.dart';
 
 import '../../../../model/popup_item.dart';
@@ -18,15 +19,17 @@ class NavBarDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
     return Container(
-      color: Colors.white,
+      color: ProjectColors.backGroundColor,
       padding: const EdgeInsets.only(
-          top: 10, bottom: 10, left: GlobalDims.paddingHoriz, right: 40),
+          top: 10, bottom:10,left: GlobalDims.paddingHoriz, right: 40),
       width: MediaQuery.sizeOf(context).width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(HomeScreenStrings.navName,
-              style: ProjectTextStyles.highlightedItem),
+          const GradientText(
+            HomeScreenStrings.navName,
+            style: ProjectTextStyles.highlightedItem,
+          ),
           Wrap(
             direction: Axis.horizontal,
             spacing: 10,
@@ -35,20 +38,22 @@ class NavBarDesktop extends StatelessWidget {
               Obx(() => Visibility(
                   visible: authController.userIsAdmin(),
                   child: GestureDetector(
-                    child: navItem('admin', () {}, ProjectAssetImages.admin),
+                    child:
+                        navItem('admin', () {}, null),
                     onTapDown: (h) {
-                      _showPopUpMenu(
-                          h.globalPosition, context, authController.popupList);
+                      _showPopUpMenu(h.globalPosition, context,
+                          authController.popupList);
                     },
                   ))),
               navItem('home', () => Get.toNamed(Routes.homeScreen),
-                  ProjectAssetImages.home),
+                  null),
               navItem('blogs', () => Get.toNamed(Routes.blogScreen),
-                  ProjectAssetImages.blog),
+                  null),
               Obx(() => Visibility(
                     visible: !authController.userExists(),
                     child: MaterialButton(
-                      color: ProjectColors.highLightColor,
+                      color: ProjectColors.onBackGroundColor,
+                      shape: GlobalDims.roundButton,
                       onPressed: () {
                         Get.dialog(
                             const CustomDialog(
@@ -60,8 +65,8 @@ class NavBarDesktop extends StatelessWidget {
                             barrierDismissible: false);
                       },
                       child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 8),
                         child: Text(
                           "login",
                           style: ProjectTextStyles.smallHighLightedText,
@@ -72,7 +77,8 @@ class NavBarDesktop extends StatelessWidget {
               Obx(() => Visibility(
                     visible: !authController.userExists(),
                     child: MaterialButton(
-                      color: ProjectColors.highLightColor,
+                      color: ProjectColors.onBackGroundColor,
+                      shape: GlobalDims.roundButton,
                       onPressed: () {
                         Get.dialog(
                             const CustomDialog(
@@ -84,8 +90,8 @@ class NavBarDesktop extends StatelessWidget {
                             barrierDismissible: false);
                       },
                       child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 8),
                         child: Text(
                           "sign up",
                           style: ProjectTextStyles.smallHighLightedText,
@@ -96,13 +102,14 @@ class NavBarDesktop extends StatelessWidget {
               Obx(() => Visibility(
                     visible: authController.userExists(),
                     child: MaterialButton(
-                      color: ProjectColors.highLightColor,
+                      color: ProjectColors.onBackGroundColor,
+                      shape: GlobalDims.roundButton,
                       onPressed: () {
                         authController.logOut();
                       },
                       child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 8),
                         child: Text(
                           "log out",
                           style: ProjectTextStyles.smallHighLightedText,

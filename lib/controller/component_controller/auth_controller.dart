@@ -1,23 +1,25 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/exceptions/exceptions.dart';
 import 'package:my_site/model/popup_item.dart';
+import 'package:my_site/model/user.dart';
 import 'package:my_site/others/resource.dart';
 import 'package:my_site/repo/auth_repo.dart';
 import 'package:my_site/resources/images/images.dart';
 
-import '../../model/user.dart';
-
 class AuthController extends GetxController {
-  RxBool admin = true.obs;
+  RxBool admin = false.obs;
   Rxn<User> user = Rxn<User>();
   Rxn<String> authError = Rxn<String>();
   AuthRepo repo = AuthRepo();
   Rx<String> emailError = "".obs;
   Rx<String> passError = "".obs;
   Rx<bool> loading = false.obs;
-  
-  List<PopUpItem> popupList = [PopUpItem("Create Blog", ProjectAssetImages.compose) , PopUpItem("Add Project", ProjectAssetImages.project), PopUpItem("Add Techstack", ProjectAssetImages.dart)];
+
+  List<PopUpItem> popupList = [
+    PopUpItem("Create Blog", ProjectAssetImages.compose),
+    PopUpItem("Add Project", ProjectAssetImages.project),
+    PopUpItem("Add Techstack", ProjectAssetImages.dart)
+  ];
 
   toggleAdmin() {
     admin.value = !admin.value;
@@ -32,7 +34,9 @@ class AuthController extends GetxController {
     }
 
     repo.loginUser(email, password).then((value) {
-      debugPrint(value.data.toString());
+      if (kDebugMode) {
+        print(value.data);
+      }
       if (value is Success) {
         authError.value = null;
         clearErrors();
@@ -41,7 +45,9 @@ class AuthController extends GetxController {
       } else {
         user.value = null;
         authError.value = value.error;
-        debugPrint(value.error);
+        if (kDebugMode) {
+          print(value.error);
+        }
         emailError.value = value.error;
         passError.value = value.error;
       }
@@ -92,7 +98,7 @@ class AuthController extends GetxController {
 
   userIsAdmin() => admin.value;
 
-  void logOut() {
+  logOut() {
     user.value = null;
     admin.value = false;
     emailError.value = "";

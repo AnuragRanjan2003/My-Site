@@ -197,7 +197,7 @@ class TextArea extends StatelessWidget {
                   if (login) {
                     debugPrint(
                         "email : ${emailController.value.text}, pass : ${passController.value.text}");
-                    authController.loginUser(
+                   authController.loginUser(
                         emailController.value.text, passController.value.text);
                   } else {
                     debugPrint(
